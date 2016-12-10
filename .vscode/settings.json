@@ -6,6 +6,8 @@
     "**/.hg": true,
     "**/.DS_Store": true,
     "node_modules": true,
+    "dist": true,
+    "bin": true,
     "**/*.d.ts": true,
     "**/*.js": { "when": "$(basename).ts"},
     "**/*.js.map": true
