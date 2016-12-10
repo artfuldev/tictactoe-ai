@@ -1,0 +1,39 @@
+{
+  "name": "tictactoe-ai",
+  "version": "1.0.0",
+  "description": "A simple AI for tic tac toe written in TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/artfuldev/tictactoe-ai.git"
+  },
+  "keywords": [
+    "tic-tac-toe",
+    "tic",
+    "tac",
+    "toe",
+    "ai",
+    "game-engine",
+    "game",
+    "engine"
+  ],
+  "author": "Sudarsan Balaji",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/artfuldev/tictactoe-ai/issues"
+  },
+  "homepage": "https://github.com/artfuldev/tictactoe-ai#readme",
+  "devDependencies": {
+    "@types/chai": "^3.4.34",
+    "@types/es6-shim": "^0.31.32",
+    "@types/mocha": "^2.2.33",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nightwatch": "^0.9.9",
+    "ts-node": "^1.7.2",
+    "typescript": "^2.1.4"
+  }
+}
