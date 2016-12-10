@@ -1,2 +1,2 @@
 # tictactoe-ai
-A simple AI for tic tac toe written in javascript
+A simple AI for tic tac toe written in TypeScript
