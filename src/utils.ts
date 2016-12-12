@@ -7,8 +7,7 @@ export function getRows(grid: Grid): Row[] {
 }
 
 export function getColumns(grid: Grid): Column[] {
-  // TODO: Make it work
-  return [];
+  return getRows(transpose(grid));
 }
 
 export function getDiagonals(grid: Grid): Diagonal[] {
@@ -18,4 +17,9 @@ export function getDiagonals(grid: Grid): Diagonal[] {
 
 function getArray(length: number) {
   return Array.apply(null, { length }).map(Number.call, Number);
+}
+
+function transpose(grid: Grid): Grid {
+  // TODO: Make it work
+  return grid;
 }
