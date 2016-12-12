@@ -1,8 +1,9 @@
 import { getMoves } from './moves';
 import { evaluate } from './evaluation';
 import { makeMove } from './game';
+import { Grid, Move } from './definitions';
 
-export function getBestMove(grid: boolean[], forX: boolean, depth?: number): number {
+export function getBestMove(grid: Grid, forX: boolean, depth?: number): Move {
   if (depth == undefined)
     depth = grid.length;
   const moves = getMoves(grid);
