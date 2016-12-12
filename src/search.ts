@@ -14,7 +14,7 @@ export function getBestMove(grid: boolean[], forX: boolean, depth?: number): num
       score: forX ? evaluation : -evaluation
     }; 
   });
-  const sortedMovesWithScores = movesWithScores.sort((x, y) => x.score - y.score);
+  const sortedMovesWithScores = movesWithScores.sort((a, b) => b.score - a.score);
   const sortedMoves = sortedMovesWithScores.map(x => x.move);
   // Return the move with the best evaluation so far
   return sortedMoves[0];
