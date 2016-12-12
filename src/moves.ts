@@ -1,5 +1,5 @@
 export function getMoves(grid: boolean[]): number[] {
-  var moves = [];
+  const moves = [];
   for(let i=0; i< grid.length; i++) {
     if(grid[i] == undefined)
       moves.push(i);
