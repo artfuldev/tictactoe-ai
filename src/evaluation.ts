@@ -1,3 +1,5 @@
-export function evaluate(grid: boolean[]): number {
+import { Grid } from './definitions';
+
+export function evaluate(grid: Grid): number {
   return 0;
 }
