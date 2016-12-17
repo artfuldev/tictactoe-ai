@@ -6,7 +6,7 @@ export function getRows<T>(grid: T[]): T[][] {
   return getArray(size).map(() => copy.splice(0, size));
 }
 
-export function getColumns(grid: Grid): Column[] {
+export function getColumns<T>(grid: T[]): T[][] {
   return getRows(transpose(grid));
 }
 
