@@ -20,6 +20,11 @@ describe('getRows', () => {
     expect(rows[1].join(',')).to.equal('4,5,6');
     expect(rows[2].join(',')).to.equal('7,8,9');
   });
+  it('should not mutate input grid', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const rows = getRows(grid);
+    expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
+  });
 });
 
 describe('getColumns', () => {
@@ -39,6 +44,11 @@ describe('getColumns', () => {
     expect(columns[0].join(',')).to.equal('1,4,7');
     expect(columns[1].join(',')).to.equal('2,5,8');
     expect(columns[2].join(',')).to.equal('3,6,9');
+  });
+  it('should not mutate input grid', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const columns = getColumns(grid);
+    expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
   });
 });
 
