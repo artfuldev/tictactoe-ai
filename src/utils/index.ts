@@ -19,10 +19,10 @@ function getArray(length: number) {
   return Array.apply(null, { length }).map(Number.call, Number);
 }
 
-function transpose(grid: Grid): Grid {
+export function transpose<T>(grid: Array<T>): Array<T> {
   const gridSize = Math.sqrt(grid.length);
   var i, j;
-  var transposed = [];
+  var transposed = grid.filter(() => false);
     for (j = 0; j < gridSize; ++j) {
         for (i = 0; i < gridSize; ++i) {
             transposed.push(grid[j + (i * gridSize)]);
