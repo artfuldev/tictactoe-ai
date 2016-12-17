@@ -1,3 +1,5 @@
+import { transpose } from './helpers';
+
 export function getRows<T>(grid: T[]): T[][] {
   const size = Math.sqrt(grid.length);
   const copy = grid.concat([]);
@@ -20,9 +22,4 @@ export function getDiagonals<T>(grid: T[]): T[][] {
 
 function getArray(length: number): number[] {
   return Array.apply(null, { length }).map(Number.call, Number);
-}
-
-export function transpose<T>(grid: Array<T>): Array<T> {
-  const size = Math.sqrt(grid.length);
-  return grid.map((x, i) => grid[Math.floor(i / size) + ((i % size) * size)]);
 }

@@ -1,4 +1,5 @@
-import { getRows, getColumns, getDiagonals, transpose } from './';
+import { getRows, getColumns, getDiagonals} from './';
+import { transpose } from './helpers';
 import { expect } from 'chai';
 import 'mocha';
 
