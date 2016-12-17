@@ -1,9 +1,9 @@
 import { Grid, Row, Column, Diagonal } from '../definitions';
 
 export function getRows(grid: Grid): Row[] {
-  const length = Math.sqrt(grid.length);
+  const size = Math.sqrt(grid.length);
   const copy = grid.concat([]);
-  return getArray(length).map(() => copy.splice(0, length));
+  return getArray(size).map(() => copy.splice(0, size));
 }
 
 export function getColumns(grid: Grid): Column[] {
