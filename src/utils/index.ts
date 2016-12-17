@@ -20,12 +20,12 @@ function getArray(length: number) {
 }
 
 export function transpose<T>(grid: Array<T>): Array<T> {
-  const gridSize = Math.sqrt(grid.length);
+  const size = Math.sqrt(grid.length);
   var i, j;
   var transposed = grid.filter(() => false);
-    for (j = 0; j < gridSize; ++j) {
-        for (i = 0; i < gridSize; ++i) {
-            transposed.push(grid[j + (i * gridSize)]);
+    for (j = 0; j < size; ++j) {
+        for (i = 0; i < size; ++i) {
+            transposed.push(grid[j + (i * size)]);
         }
     }
   return transposed;
