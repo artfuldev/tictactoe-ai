@@ -1,5 +1,3 @@
-import { Grid, Row, Column, Diagonal } from '../definitions';
-
 export function getRows<T>(grid: T[]): T[][] {
   const size = Math.sqrt(grid.length);
   const copy = grid.concat([]);
