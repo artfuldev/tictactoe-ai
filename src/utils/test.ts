@@ -1,4 +1,4 @@
-import { getRows, getColumns, transpose } from './';
+import { getRows, getColumns, getDiagonals, transpose } from './';
 import { expect } from 'chai';
 import 'mocha';
 
@@ -48,6 +48,30 @@ describe('getColumns', () => {
   it('should not mutate input grid', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const columns = getColumns(grid);
+    expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
+  });
+});
+
+describe('getDiagonals', () => {
+  it('should get 2 diagonals from nxn grid', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const diagonals = getDiagonals(grid);
+    expect(diagonals.length).to.equal(2);
+  });
+  it('should get diagonals from nxn grid each with length n', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const diagonals = getDiagonals(grid);
+    diagonals.forEach(diagonal => expect(diagonal.length).to.equal(3));
+  });
+  it('should get diagonals from nxn grid with proper values', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const diagonals = getDiagonals(grid);
+    expect(diagonals[0].join(',')).to.equal('1,5,9');
+    expect(diagonals[1].join(',')).to.equal('3,5,7');
+  });
+  it('should not mutate input grid', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const diagonals = getDiagonals(grid);
     expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
   });
 });
