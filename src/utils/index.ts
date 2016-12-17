@@ -10,7 +10,7 @@ export function getColumns<T>(grid: T[]): T[][] {
   return getRows(transpose(grid));
 }
 
-export function getDiagonals(grid: Grid): Diagonal[] {
+export function getDiagonals<T>(grid: T[]): T[][] {
   // TODO: Make it work
   return [];
 }
