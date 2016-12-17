@@ -1,4 +1,4 @@
-import { Grid, Row, Column, Diagonal } from './definitions';
+import { Grid, Row, Column, Diagonal } from '../definitions';
 
 export function getRows(grid: Grid): Row[] {
   const length = Math.sqrt(grid.length);
