@@ -1,6 +1,6 @@
 import { Grid, Row, Column, Diagonal } from '../definitions';
 
-export function getRows(grid: Grid): Row[] {
+export function getRows<T>(grid: T[]): T[][] {
   const size = Math.sqrt(grid.length);
   const copy = grid.concat([]);
   return getArray(size).map(() => copy.splice(0, size));
@@ -15,7 +15,7 @@ export function getDiagonals(grid: Grid): Diagonal[] {
   return [];
 }
 
-function getArray(length: number) {
+function getArray(length: number): number[] {
   return Array.apply(null, { length }).map(Number.call, Number);
 }
 
