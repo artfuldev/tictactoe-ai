@@ -21,11 +21,5 @@ function getArray(length: number) {
 
 export function transpose<T>(grid: Array<T>): Array<T> {
   const size = Math.sqrt(grid.length);
-  const transposed = grid.filter(() => false);
-    for (let j = 0; j < size; ++j) {
-        for (let i = 0; i < size; ++i) {
-            transposed.push(grid[j + (i * size)]);
-        }
-    }
-  return transposed;
+  return grid.map((x, i) => grid[Math.floor(i / size) + ((i % size) * size)]);
 }
