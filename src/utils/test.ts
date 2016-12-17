@@ -43,7 +43,12 @@ describe('getColumns', () => {
 });
 
 describe('transpose', () => {
-  it('should transpose nxn grid properly', () => {
+  it('should return transposed grid with same length', () => {
+    const grid = [1,2,3,4,5,6,7,8,9];
+    const transposed = transpose(grid);
+    expect(transposed.length).to.equal(grid.length);
+  });
+  it('should transpose nxn grid with proper values', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const transposed = transpose(grid);
     expect(transposed.join(',')).to.equal('1,4,7,2,5,8,3,6,9');
