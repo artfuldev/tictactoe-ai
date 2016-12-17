@@ -20,6 +20,13 @@ function getArray(length: number) {
 }
 
 function transpose(grid: Grid): Grid {
-  // TODO: Make it work
-  return grid;
+  const gridSize = Math.sqrt(grid.length);
+  var i, j;
+  var transposed = [];
+    for (j = 0; j < gridSize; ++j) {
+        for (i = 0; i < gridSize; ++i) {
+            transposed.push(grid[j + (i * gridSize)]);
+        }
+    }
+  return transposed;
 }
