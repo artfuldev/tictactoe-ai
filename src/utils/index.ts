@@ -14,7 +14,7 @@ export function getDiagonals<T>(grid: T[]): T[][] {
   const last = grid.length - 1;
   return [
     grid.filter((x, i) => Math.floor(i / size) === i % size),
-    grid.filter((x, i) => i > 0 && i % lesser === 0 && i !== last)
+    grid.filter((x, i) => i > 0 && i < last && i % lesser === 0)
   ];
 }
 
