@@ -1,5 +1,9 @@
 import { transpose } from './helpers';
 
+function getArray(length: number): number[] {
+  return Array.apply(null, { length }).map(Number.call, Number);
+}
+
 export function getRows<T>(grid: T[]): T[][] {
   const size = Math.sqrt(grid.length);
   const copy = grid.concat([]);
@@ -18,8 +22,4 @@ export function getDiagonals<T>(grid: T[]): T[][] {
     grid.filter((x, i) => Math.floor(i / size) === i % size),
     grid.filter((x, i) => i > 0 && i < last && i % lesser === 0)
   ];
-}
-
-function getArray(length: number): number[] {
-  return Array.apply(null, { length }).map(Number.call, Number);
 }
