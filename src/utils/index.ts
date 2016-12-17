@@ -11,8 +11,13 @@ export function getColumns<T>(grid: T[]): T[][] {
 }
 
 export function getDiagonals<T>(grid: T[]): T[][] {
-  // TODO: Make it work
-  return [];
+  const size = Math.sqrt(grid.length);
+  const lesser = size - 1;
+  const last = grid.length - 1;
+  return [
+    grid.filter((x, i) => Math.floor(i / size) === i % size),
+    grid.filter((x, i) => i > 0 && i % lesser === 0 && i !== last)
+  ];
 }
 
 function getArray(length: number): number[] {
