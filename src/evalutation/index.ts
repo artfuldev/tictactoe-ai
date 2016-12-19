@@ -1,5 +1,5 @@
-import { Grid, Row, Column, Diagonal } from './definitions';
-import { getRows, getColumns, getDiagonals } from './utils';
+import { Grid, Row, Column, Diagonal } from '../definitions';
+import { getRows, getColumns, getDiagonals } from '../utils';
 
 export function evaluate(grid: Grid): number {
   return evaluateRows(grid) + evaluateColumns(grid) + evaluateDiagonals(grid);
