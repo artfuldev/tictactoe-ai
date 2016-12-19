@@ -1,12 +1,12 @@
 import { evaluate } from './';
 import { evaluateRows, evaluateColumns, evaluateDiagonals, evaluateCells } from './helpers';
 import { expect } from 'chai';
-import { Grid } from '../definitions';
+import { Grid, Cell } from '../definitions';
 import 'mocha';
 
 describe('evaluateCells', () => {
   it('should evaluate cells to a number', () => {
-    const cells: Grid = [];
+    const cells: Cell[] = [];
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.be.a('number');
   });
