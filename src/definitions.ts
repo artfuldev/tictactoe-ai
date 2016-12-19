@@ -1,5 +1,6 @@
-export interface Grid extends Array<boolean> {};
-export interface Row extends Array<boolean> {};
-export interface Column extends Array<boolean> {};
-export interface Diagonal extends Array<boolean> {};
+export interface Cell extends Boolean {};
+export interface Grid extends Array<Cell> {};
+export interface Row extends Array<Cell> {};
+export interface Column extends Array<Cell> {};
+export interface Diagonal extends Array<Cell> {};
 export interface Move extends Number {};
