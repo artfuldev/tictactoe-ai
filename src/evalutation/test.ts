@@ -15,4 +15,9 @@ describe('evaluateCells', () => {
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.equal(0);
   });
+  it('should not mutate input cells', () => {
+    const cells = [true, false, undefined, true, undefined, false];
+    const evaluation = evaluateCells(cells);
+    expect(cells.join(',')).to.equal('true,false,,true,,false');
+  });
 })
