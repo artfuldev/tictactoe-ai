@@ -1,5 +1,5 @@
 import { getRows, getColumns, getDiagonals } from '../utils';
-import { Grid } from '../definitions';
+import { Grid, Cell } from '../definitions';
 
 export function evaluateRows(grid: Grid): number {
   return getRows(grid)
@@ -19,6 +19,6 @@ export function evaluateDiagonals(grid: Grid): number {
     .reduce((x, y) => x + y, 0);
 }
 
-export function evaluateCells(cells: boolean[]): number {
+export function evaluateCells(cells: Cell[]): number {
   return 0;
 }
