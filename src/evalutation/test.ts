@@ -20,12 +20,12 @@ describe('evaluateCells', () => {
     const evaluation = evaluateCells(cells);
     expect(cells.join(',')).to.equal('true,false,,true,,false');
   });
-  it('should give true values a positive score', () => {
+  it('should give true cells a positive score', () => {
     const cells = [true, undefined, undefined];
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.be.greaterThan(0);
   });
-  it('should give false values a negative score', () => {
+  it('should give false cells a negative score', () => {
     const cells = [false, undefined, undefined];
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.be.lessThan(0);
