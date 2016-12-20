@@ -47,4 +47,14 @@ describe('evaluateCells', () => {
       expect(evaluation).to.equal(expectation);
     });
   }
+  it('should evaluate a true winning terminal node of cells to Infinity', () => {
+    const cells = [true, true, true];
+    const evaluation = evaluateCells(cells);
+    expect(evaluation).to.equal(Infinity);
+  });
+  it('should evaluate a false winning terminal node of cells to -Infinity', () => {
+    const cells = [false, false, false];
+    const evaluation = evaluateCells(cells);
+    expect(evaluation).to.equal(-Infinity);
+  });
 })
