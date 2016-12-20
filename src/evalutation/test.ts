@@ -30,4 +30,23 @@ describe('evaluateCells', () => {
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.be.lessThan(0);
   });
+  const assertions = [
+    {cells: [true, true, undefined], expectation: 4},
+    {cells: [true, undefined, true], expectation: 4},
+    {cells: [true, true, true], expectation: 8},
+    {cells: [false, false, undefined], expectation: -4},
+    {cells: [false, undefined, false], expectation: -4},
+    {cells: [false, false, false], expectation: -8},
+    {cells: [true, false, undefined], expectation: 0},
+    {cells: [undefined, false, true], expectation: 0},
+  ];
+  const expectedEvaluations = [];
+  for(let i=0;i<assertions.length; i++) {
+    const cells = assertions[i].cells;
+    const expectation = assertions[i].expectation;
+    it('should evaluate [' + cells.join(',') + '] to ' + expectation, () => {
+      const evaluation = evaluateCells(cells);
+      expect(evaluation).to.equal(expectation);
+    });
+  }
 })
