@@ -25,4 +25,9 @@ describe('evaluateCells', () => {
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.be.greaterThan(0);
   });
+  it('should give false values a negative score', () => {
+    const cells = [false, undefined, undefined];
+    const evaluation = evaluateCells(cells);
+    expect(evaluation).to.be.lessThan(0);
+  });
 })
