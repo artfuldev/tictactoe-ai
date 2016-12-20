@@ -20,11 +20,10 @@ export function evaluateDiagonals(grid: Grid): number {
 }
 
 export function evaluateCells(cells: Cell[]): number {
-  if(cells.every(x => x == undefined))
-    return 0;
-  if(cells.every(x => x === true || x == undefined))
-    return Math.pow(2,cells.filter(x => x === true).length);
-  if(cells.every(x => x === false || x == undefined))
-    return -Math.pow(2,cells.filter(x => x === false).length);
+  if(cells.every(x => x == undefined)) return 0;
+  if(cells.every(x => x === true)) return Infinity;
+  if(cells.every(x => x === false)) return -Infinity;
+  if(cells.every(x => x === true || x == undefined)) return Math.pow(2,cells.filter(x => x === true).length);
+  if(cells.every(x => x === false || x == undefined)) return -Math.pow(2,cells.filter(x => x === false).length);
   return 0;
 }
