@@ -20,6 +20,7 @@ export function evaluateDiagonals(grid: Grid): number {
 }
 
 export function evaluateCells(cells: Cell[]): number {
+  // TODO: Avoid 5 passes in the worst case
   if(cells.every(x => x == undefined)) return 0;
   if(cells.every(x => x === true)) return Infinity;
   if(cells.every(x => x === false)) return -Infinity;
