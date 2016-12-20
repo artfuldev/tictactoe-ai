@@ -33,10 +33,8 @@ describe('evaluateCells', () => {
   const assertions = [
     {cells: [true, true, undefined], expectation: 4},
     {cells: [true, undefined, true], expectation: 4},
-    {cells: [true, true, true], expectation: 8},
     {cells: [false, false, undefined], expectation: -4},
     {cells: [false, undefined, false], expectation: -4},
-    {cells: [false, false, false], expectation: -8},
     {cells: [true, false, undefined], expectation: 0},
     {cells: [undefined, false, true], expectation: 0},
   ];
