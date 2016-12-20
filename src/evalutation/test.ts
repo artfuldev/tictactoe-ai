@@ -20,4 +20,9 @@ describe('evaluateCells', () => {
     const evaluation = evaluateCells(cells);
     expect(cells.join(',')).to.equal('true,false,,true,,false');
   });
+  it('should give true values a positive score', () => {
+    const cells = [true, undefined, undefined];
+    const evaluation = evaluateCells(cells);
+    expect(evaluation).to.be.greaterThan(0);
+  });
 })
