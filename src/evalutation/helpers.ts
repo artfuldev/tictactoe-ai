@@ -20,13 +20,23 @@ export function evaluateDiagonals(grid: Grid): number {
 }
 
 export function evaluateCells(cells: Cell[]): number {
-  // TODO: Avoid 5 passes in the worst case
-  if(cells.every(x => x == undefined)) return 0;
-  if(cells.every(x => x === true)) return Infinity;
-  if(cells.every(x => x === false)) return -Infinity;
-  if(cells.every(x => x === true || x == undefined))
-    return Math.pow(2,cells.filter(x => x === true).length);
-  if(cells.every(x => x === false || x == undefined))
-    return -Math.pow(2,cells.filter(x => x === false).length);
+  const length = cells.length;
+  if(length === 0) return 0;
+  const initial = { undefined: 0, true: 0, false: 0 };
+  const counts = cells.reduce((counts, cell) => increment(counts, cell), initial);
+  if (counts.undefined === length) return 0;
+  if (counts.true === length) return Infinity;
+  if (counts.false === length) return -Infinity;
+  if (counts.false === 0) return Math.pow(2, counts.true);
+  if (counts.true === 0) return -Math.pow(2, counts.false);
   return 0;
+}
+
+export function increment<T>(obj: T, key: any): T {
+  const newObj = {} as T;
+  for(let prop in obj)
+    if(obj.hasOwnProperty(prop))
+      newObj[prop] = obj[prop];
+  newObj[key+'']++;
+  return newObj;
 }
