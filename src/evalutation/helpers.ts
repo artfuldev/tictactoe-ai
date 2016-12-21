@@ -32,7 +32,7 @@ export function evaluateCells(cells: Cell[]): number {
   return 0;
 }
 
-export function increment<T>(obj: T, key: any): T {
+function increment<T>(obj: T, key: any): T {
   const newObj = {} as T;
   for(let prop in obj)
     if(obj.hasOwnProperty(prop))
