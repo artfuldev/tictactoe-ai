@@ -57,4 +57,18 @@ describe('evaluateCells', () => {
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.equal(-Infinity);
   });
-})
+});
+
+describe('evaluate', () => {
+  const grids = [[true, false, true, undefined, true, false, undefined, undefined, true]];
+  grids.forEach(grid => {
+    it('should be the sum of evaluateRows, evaluateColumns, and evaluateDiagonals', () => {
+      const rowsEvaluation = evaluateRows(grid);
+      const columnsEvaluation = evaluateColumns(grid);
+      const diagonalsEvaluation = evaluateDiagonals(grid);
+      const sum = rowsEvaluation + columnsEvaluation + diagonalsEvaluation;
+      const evaluation = evaluate(grid);
+      expect(evaluation).to.equal(sum);
+    });
+  });
+});
