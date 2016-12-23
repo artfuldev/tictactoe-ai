@@ -59,6 +59,14 @@ describe('evaluateCells', () => {
   });
 });
 
+describe('evaluateRows', () => {
+  it('should evaluate rows of grid as expected', () => {
+    const grid = [true, false, undefined, true, true, false, true, true, undefined];
+    const evaluation = evaluateRows(grid);
+    expect(evaluation).to.equal(4);
+  });
+});
+
 describe('evaluate', () => {
   const grids = [[true, false, true, undefined, true, false, undefined, undefined, true]];
   grids.forEach(grid => {
