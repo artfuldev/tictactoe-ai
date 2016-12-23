@@ -65,6 +65,12 @@ describe('evaluateRows', () => {
     const evaluation = evaluateRows(grid);
     expect(evaluation).to.equal(4);
   });
+  it('should not mutate input grid', () => {
+    const grid = [true, false, undefined, true, true, false, true, true, undefined];
+    const expected = grid.join(',');
+    const evaluation = evaluateRows(grid);
+    expect(grid.join(',')).to.equal(expected);
+  });
 });
 
 describe('evaluate', () => {
