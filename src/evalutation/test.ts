@@ -71,4 +71,9 @@ describe('evaluate', () => {
       expect(evaluation).to.equal(sum);
     });
   });
+  it('should not mutate input grid', () => {
+    const grid = [true, false, true, undefined, true, false, undefined, undefined, true];
+    const evaluation = evaluate(grid);
+    expect(grid.join(',')).to.equal('true,false,true,,true,false,,,true');
+  });
 });
