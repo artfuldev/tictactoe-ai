@@ -7,7 +7,7 @@ export function makeMove(grid: Grid, move: Move, forX: (grid: Grid) => boolean):
 }
 
 function doesAnyArrayHaveAll(cellsArray: Cell[][], value: boolean): boolean {
-  return cellsArray.some(cells => cells.every(cell => cell === true));
+  return cellsArray.some(cells => cells.every(cell => cell === value));
 }
 
 function hasWon(grid: Grid, forX: boolean) : boolean {
