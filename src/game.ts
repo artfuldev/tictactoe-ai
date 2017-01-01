@@ -10,16 +10,18 @@ function doesAnyArrayHaveAll(cellsArray: Cell[][], value: boolean): boolean {
   return cellsArray.some(cells => cells.every(cell => cell === true));
 }
 
+function hasWon(grid: Grid, forX: boolean) : boolean {
+  return doesAnyArrayHaveAll(getRows(grid), forX)
+    || doesAnyArrayHaveAll(getColumns(grid), forX)
+    || doesAnyArrayHaveAll(getDiagonals(grid), forX);
+}
+
 function hasXWon(grid: Grid): boolean {
-  return doesAnyArrayHaveAll(getRows(grid), true)
-    || doesAnyArrayHaveAll(getColumns(grid), true)
-    || doesAnyArrayHaveAll(getDiagonals(grid), true);
+  return hasWon(grid, true);
 }
 
 function hasOWon(grid: Grid): boolean {
-  return doesAnyArrayHaveAll(getRows(grid), false)
-    || doesAnyArrayHaveAll(getColumns(grid), false)
-    || doesAnyArrayHaveAll(getDiagonals(grid), false);
+  return hasWon(grid, false);
 }
 
 function isDraw(grid: Grid): boolean {
