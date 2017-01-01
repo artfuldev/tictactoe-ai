@@ -73,6 +73,20 @@ describe('evaluateRows', () => {
   });
 });
 
+describe('evaluateColumns', () => {
+  it('should evaluate columns of grid as expected', () => {
+    const grid = [true, false, undefined, true, true, false, true, true, undefined];
+    const evaluation = evaluateColumns(grid);
+    expect(evaluation).to.equal(Infinity);
+  });
+  it('should not mutate input grid', () => {
+    const grid = [true, false, undefined, true, true, false, true, true, undefined];
+    const expected = grid.join(',');
+    const evaluation = evaluateRows(grid);
+    expect(grid.join(',')).to.equal(expected);
+  });
+});
+
 describe('evaluate', () => {
   const grids = [[true, false, true, undefined, true, false, undefined, undefined, true]];
   grids.forEach(grid => {
