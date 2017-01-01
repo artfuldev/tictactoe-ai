@@ -1,20 +1,26 @@
 import { getMoves } from '../moves';
 import { evaluate } from '../evaluation';
-import { makeMove } from '../game';
+import { makeMove, hasGameEnded } from '../game';
 import { Grid, Move } from '../definitions';
+import { alphaBeta } from './alphaBeta';
 
-export function getBestMove(grid: Grid, forX: boolean, depth?: number): Move {
-  if (depth == undefined) depth = grid.length;
+export function getBestMove(grid: Grid, forX: (grid: Grid) => boolean,
+  depth?: number): Move {
   const moves = getMoves(grid);
+  if (depth == undefined) depth = moves.length;
+  const isX = forX(grid);
   const movesWithScores = moves.map(move => {
     const newGrid = makeMove(grid, move, forX);
-    const evaluation = evaluate(newGrid);
+    const evaluation = alphaBeta(newGrid, depth, -Infinity, Infinity, !isX,
+      evaluate, hasGameEnded,
+      grid => getMoves(grid).map(move => makeMove(grid, move, forX)));
     return {
       move,
-      score: forX ? evaluation : -evaluation
-    }; 
+      score: isX ? evaluation : -evaluation
+    };
   });
-  const sortedMovesWithScores = movesWithScores.sort((a, b) => b.score - a.score);
+  const sortedMovesWithScores =
+    movesWithScores.sort((a, b) => b.score - a.score);
   const sortedMoves = sortedMovesWithScores.map(x => x.move);
   // Return the move with the best evaluation so far
   return sortedMoves[0];
