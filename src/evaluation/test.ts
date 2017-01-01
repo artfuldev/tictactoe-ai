@@ -11,7 +11,7 @@ describe('evaluateCells', () => {
     expect(evaluation).to.be.a('number');
   });
   it('should evaluate undefined cells to 0', () => {
-    const cells:boolean[] = [undefined, undefined, undefined];
+    const cells: Cell[] = [undefined, undefined, undefined];
     const evaluation = evaluateCells(cells);
     expect(evaluation).to.equal(0);
   });
