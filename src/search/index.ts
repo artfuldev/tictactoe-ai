@@ -1,7 +1,7 @@
-import { getMoves } from './moves';
-import { evaluate } from './evaluation';
-import { makeMove } from './game';
-import { Grid, Move } from './definitions';
+import { getMoves } from '../moves';
+import { evaluate } from '../evaluation';
+import { makeMove } from '../game';
+import { Grid, Move } from '../definitions';
 
 export function getBestMove(grid: Grid, forX: boolean, depth?: number): Move {
   if (depth == undefined) depth = grid.length;
