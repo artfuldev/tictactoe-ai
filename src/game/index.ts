@@ -1,5 +1,5 @@
-import { Grid, Move, Cell } from './definitions';
-import { getRows, getColumns, getDiagonals } from './utils';
+import { Grid, Move, Cell } from '../definitions';
+import { getRows, getColumns, getDiagonals } from '../utils';
 
 export function nextValue(grid: Grid): boolean {
   return grid.filter(cell => cell != undefined).length % 2 == 0;
