@@ -4,8 +4,7 @@ import { makeMove } from './game';
 import { Grid, Move } from './definitions';
 
 export function getBestMove(grid: Grid, forX: boolean, depth?: number): Move {
-  if (depth == undefined)
-    depth = grid.length;
+  if (depth == undefined) depth = grid.length;
   const moves = getMoves(grid);
   const movesWithScores = moves.map(move => {
     const newGrid = makeMove(grid, move, forX);
