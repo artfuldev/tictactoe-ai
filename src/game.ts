@@ -1,4 +1,4 @@
-import { Grid, Move } from './definitions';
+import { Grid, Move, Cell } from './definitions';
 import { getRows, getColumns, getDiagonals } from './utils';
 
 export function makeMove(grid: Grid, move: Move, forX: (grid: Grid) => boolean): Grid {
@@ -6,16 +6,20 @@ export function makeMove(grid: Grid, move: Move, forX: (grid: Grid) => boolean):
   return grid.map((value, index) => index == move ? newValue : value);
 }
 
+function doesAnyArrayHaveAll(cellsArray: Cell[][], value: boolean): boolean {
+  return cellsArray.some(cells => cells.every(cell => cell === true));
+}
+
 function hasXWon(grid: Grid): boolean {
-  return getRows(grid).some(row => row.every(cell => cell === true))
-    || getColumns(grid).some(column => column.every(cell => cell === true))
-    || getDiagonals(grid).some(diagonal => diagonal.every(cell => cell === true));
+  return doesAnyArrayHaveAll(getRows(grid), true)
+    || doesAnyArrayHaveAll(getColumns(grid), true)
+    || doesAnyArrayHaveAll(getDiagonals(grid), true);
 }
 
 function hasOWon(grid: Grid): boolean {
-  return getRows(grid).some(row => row.every(cell => cell === false))
-    || getColumns(grid).some(column => column.every(cell => cell === false))
-    || getDiagonals(grid).some(diagonal => diagonal.every(cell => cell === false));
+  return doesAnyArrayHaveAll(getRows(grid), false)
+    || doesAnyArrayHaveAll(getColumns(grid), false)
+    || doesAnyArrayHaveAll(getDiagonals(grid), false);
 }
 
 function isDraw(grid: Grid): boolean {
