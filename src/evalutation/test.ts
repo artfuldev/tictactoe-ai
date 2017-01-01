@@ -87,6 +87,20 @@ describe('evaluateColumns', () => {
   });
 });
 
+describe('evaluateDiagonals', () => {
+  it('should evaluate diagonals of grid as expected', () => {
+    const grid = [true, false, undefined, true, true, false, true, true, undefined];
+    const evaluation = evaluateDiagonals(grid);
+    expect(evaluation).to.equal(8);
+  });
+  it('should not mutate input grid', () => {
+    const grid = [true, false, undefined, true, true, false, true, true, undefined];
+    const expected = grid.join(',');
+    const evaluation = evaluateDiagonals(grid);
+    expect(grid.join(',')).to.equal(expected);
+  });
+});
+
 describe('evaluate', () => {
   const grids = [[true, false, true, undefined, true, false, undefined, undefined, true]];
   grids.forEach(grid => {
