@@ -5,7 +5,18 @@ export function makeMove(grid: Grid, move: Move, forX: (grid: Grid) => boolean):
   return grid.map((value, index) => index == move ? newValue : value);
 }
 
-export function hasGameEnded(grid: Grid): boolean {
-  // TODO: complete
+function hasXWon(grid: Grid): boolean {
   return false;
+}
+
+function hasOWon(grid: Grid): boolean {
+  return false;
+}
+
+function isDraw(grid: Grid): boolean {
+  return false;
+}
+
+export function hasGameEnded(grid: Grid): boolean {
+  return hasXWon(grid) || hasOWon(grid) || isDraw(grid);
 }
