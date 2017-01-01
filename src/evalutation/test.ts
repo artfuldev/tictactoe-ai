@@ -82,7 +82,7 @@ describe('evaluateColumns', () => {
   it('should not mutate input grid', () => {
     const grid = [true, false, undefined, true, true, false, true, true, undefined];
     const expected = grid.join(',');
-    const evaluation = evaluateRows(grid);
+    const evaluation = evaluateColumns(grid);
     expect(grid.join(',')).to.equal(expected);
   });
 });
