@@ -21,3 +21,11 @@ describe('nextValue', () => {
     expect(grid.join(',')).to.equal(input);
   });
 });
+
+describe('hasGameEnded', () => {
+  it('should return false when game hasn\'t ended', () => {
+    const grid: Grid = [true, false, undefined, true, false, undefined, undefined, undefined, undefined];
+    const result = hasGameEnded(grid);
+    expect(result).to.equal(false);
+  });
+});
