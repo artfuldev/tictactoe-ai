@@ -17,14 +17,14 @@ describe('getRows', () => {
   it('should get rows from nxn grid with proper values', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const rows = getRows(grid);
-    expect(rows[0].join(',')).to.equal('1,2,3');
-    expect(rows[1].join(',')).to.equal('4,5,6');
-    expect(rows[2].join(',')).to.equal('7,8,9');
+    expect(rows[0]).to.deep.equal([1,2,3]);
+    expect(rows[1]).to.deep.equal([4,5,6]);
+    expect(rows[2]).to.deep.equal([7,8,9]);
   });
   it('should not mutate input grid', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const rows = getRows(grid);
-    expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
+    expect(grid).to.deep.equal([1,2,3,4,5,6,7,8,9]);
   });
 });
 
@@ -42,14 +42,14 @@ describe('getColumns', () => {
   it('should get columns from nxn grid with proper values', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const columns = getColumns(grid);
-    expect(columns[0].join(',')).to.equal('1,4,7');
-    expect(columns[1].join(',')).to.equal('2,5,8');
-    expect(columns[2].join(',')).to.equal('3,6,9');
+    expect(columns[0]).to.deep.equal([1,4,7]);
+    expect(columns[1]).to.deep.equal([2,5,8]);
+    expect(columns[2]).to.deep.equal([3,6,9]);
   });
   it('should not mutate input grid', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const columns = getColumns(grid);
-    expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
+    expect(grid).to.deep.equal([1,2,3,4,5,6,7,8,9]);
   });
 });
 
@@ -67,8 +67,8 @@ describe('getDiagonals', () => {
   it('should get diagonals from nxn grid with proper values', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const diagonals = getDiagonals(grid);
-    expect(diagonals[0].join(',')).to.equal('1,5,9');
-    expect(diagonals[1].join(',')).to.equal('3,5,7');
+    expect(diagonals[0]).to.deep.equal([1,5,9]);
+    expect(diagonals[1]).to.deep.equal([3,5,7]);
   });
   it('should not mutate input grid', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
@@ -86,11 +86,11 @@ describe('transpose', () => {
   it('should transpose nxn grid with proper values', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const transposed = transpose(grid);
-    expect(transposed.join(',')).to.equal('1,4,7,2,5,8,3,6,9');
+    expect(transposed).to.deep.equal([1,4,7,2,5,8,3,6,9]);
   });
   it('should not mutate input grid', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const transposed = transpose(grid);
-    expect(grid.join(',')).to.equal('1,2,3,4,5,6,7,8,9');
+    expect(grid).to.deep.equal([1,2,3,4,5,6,7,8,9]);
   });
 });
