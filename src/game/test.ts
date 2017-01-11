@@ -43,4 +43,10 @@ describe('hasGameEnded', () => {
     const result = hasGameEnded(grid);
     expect(result).to.equal(true);
   });
+  it('should not mutate input grid', () => {
+    const grid: Grid = [true, false, true, true, false, false, false, true, true];
+    const expected = grid.join(',');
+    const result = hasGameEnded(grid);
+    expect(grid.join(',')).to.equal(expected);
+  });
 });
