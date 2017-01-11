@@ -17,8 +17,9 @@ describe('evaluateCells', () => {
   });
   it('should not mutate input cells', () => {
     const cells = [true, false, undefined, true, undefined, false];
+    const expected = [true, false, undefined, true, undefined, false];
     const evaluation = evaluateCells(cells);
-    expect(cells.join(',')).to.equal('true,false,,true,,false');
+    expect(cells).to.deep.equal(expected);
   });
   it('should give true cells a positive score', () => {
     const cells = [true, undefined, undefined];
@@ -67,9 +68,9 @@ describe('evaluateRows', () => {
   });
   it('should not mutate input grid', () => {
     const grid = [true, false, undefined, true, true, false, true, true, undefined];
-    const expected = grid.join(',');
+    const expected = [true, false, undefined, true, true, false, true, true, undefined];
     const evaluation = evaluateRows(grid);
-    expect(grid.join(',')).to.equal(expected);
+    expect(grid).to.deep.equal(expected);
   });
 });
 
