@@ -37,7 +37,7 @@ describe('getColumns', () => {
   it('should get columns from nxn grid each with length n', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
     const columns = getColumns(grid);
-    columns.forEach(row => expect(row.length).to.equal(3));
+    columns.forEach(column => expect(column.length).to.equal(3));
   });
   it('should get columns from nxn grid with proper values', () => {
     const grid = [1,2,3,4,5,6,7,8,9];
