@@ -16,9 +16,9 @@ describe('nextValue', () => {
   });
   it('should not mutate input grid', () => {
     const grid: Grid = [true, false, undefined, undefined, undefined, undefined];
-    const input = grid.join(',');
+    const expected = [true, false, undefined, undefined, undefined, undefined];
     const next = nextValue(grid);
-    expect(grid.join(',')).to.equal(input);
+    expect(grid).to.deep.equal(expected);
   });
 });
 
@@ -45,8 +45,8 @@ describe('hasGameEnded', () => {
   });
   it('should not mutate input grid', () => {
     const grid: Grid = [true, false, true, true, false, false, false, true, true];
-    const expected = grid.join(',');
+    const expected = [true, false, true, true, false, false, false, true, true];
     const result = hasGameEnded(grid);
-    expect(grid.join(',')).to.equal(expected);
+    expect(grid).to.deep.equal(expected);
   });
 });
