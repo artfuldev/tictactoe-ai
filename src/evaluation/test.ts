@@ -82,9 +82,9 @@ describe('evaluateColumns', () => {
   });
   it('should not mutate input grid', () => {
     const grid = [true, false, undefined, true, true, false, true, true, undefined];
-    const expected = grid.join(',');
+    const expected = [true, false, undefined, true, true, false, true, true, undefined];
     const evaluation = evaluateColumns(grid);
-    expect(grid.join(',')).to.equal(expected);
+    expect(grid).to.deep.equal(expected);
   });
 });
 
@@ -96,9 +96,9 @@ describe('evaluateDiagonals', () => {
   });
   it('should not mutate input grid', () => {
     const grid = [true, false, undefined, true, true, false, true, true, undefined];
-    const expected = grid.join(',');
+    const expected = [true, false, undefined, true, true, false, true, true, undefined];
     const evaluation = evaluateDiagonals(grid);
-    expect(grid.join(',')).to.equal(expected);
+    expect(grid).to.deep.equal(expected);
   });
 });
 
@@ -116,7 +116,8 @@ describe('evaluate', () => {
   });
   it('should not mutate input grid', () => {
     const grid = [true, false, true, undefined, true, false, undefined, undefined, true];
+    const expected = [true, false, true, undefined, true, false, undefined, undefined, true];
     const evaluation = evaluate(grid);
-    expect(grid.join(',')).to.equal('true,false,true,,true,false,,,true');
+    expect(grid).to.deep.equal(expected);
   });
 });
