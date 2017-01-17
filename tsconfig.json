@@ -8,7 +8,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "module": "commonjs",
     "target": "ES5",
-    "outDir": "./dist/"
+    "outDir": "./docs/"
   },
   "formatCodeOptions": {
     "indentSize": 2,
