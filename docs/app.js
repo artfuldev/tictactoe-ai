@@ -127,9 +127,10 @@
 	    if (forX == undefined)
 	        forX = game_1.nextValue;
 	    var isX = forX(grid);
+	    var getNextNodes = function (grid) { return moves_1.getMoves(grid).map(function (move) { return game_1.makeMove(grid, move, forX); }); };
 	    var movesWithScores = moves.map(function (move) {
 	        var newGrid = game_1.makeMove(grid, move, forX);
-	        var score = minimax_1.minimax(newGrid, depth, !isX, evaluation_1.evaluate, game_1.hasGameEnded, function (grid) { return moves_1.getMoves(grid).map(function (move) { return game_1.makeMove(grid, move, forX); }); });
+	        var score = minimax_1.minimax(newGrid, depth, !isX, evaluation_1.evaluate, game_1.hasGameEnded, getNextNodes);
 	        return {
 	            move: move,
 	            score: isX ? score : -score

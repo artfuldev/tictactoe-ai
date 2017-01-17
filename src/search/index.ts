@@ -11,9 +11,10 @@ export function getBestMove(grid: Grid, forX?: (grid: Grid) => boolean,
   if (depth == undefined) depth = moves.length;
   if (forX == undefined) forX = nextValue;
   const isX = forX(grid);
+  const getNextNodes = (grid: Grid) => getMoves(grid).map(move => makeMove(grid, move, forX));
   const movesWithScores = moves.map(move => {
     const newGrid = makeMove(grid, move, forX);
-    const score = minimax(newGrid, depth, !isX, evaluate, hasGameEnded, grid => getMoves(grid).map(move => makeMove(grid, move, forX)));
+    const score = minimax(newGrid, depth, !isX, evaluate, hasGameEnded, getNextNodes);
     return {
       move,
       score: isX ? score: -score
