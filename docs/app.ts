@@ -7,7 +7,8 @@ const xPlayed = function (index: number) {
   const grid = cells.map((x, i) => x.className === 'cell X' ? true : x.className === 'cell O' ? false : undefined);
   const result = getBestMove(grid);
   console.log(result);
-  cells[result as number].className = 'cell O';
+  if (result == undefined) console.log('Game already over');
+  else cells[result as number].className = 'cell O';
 };
 
 document.querySelector('.grid').addEventListener('click', event => {
