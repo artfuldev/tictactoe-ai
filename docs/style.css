@@ -137,6 +137,21 @@ a.new:hover {
   clear: left;
 }
 
+.result {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  background: rgba(255,255,255,0.8);
+}
+
+.result.won, .result.drawn {
+  display: block;
+}
+
 .cell {
   height: 33.33%;
   width: 33.33%;
