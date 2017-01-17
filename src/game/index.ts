@@ -1,5 +1,5 @@
 import { Grid, Move } from '../definitions';
-import { hasXWon, hasOWon, isDraw } from './helpers';
+import { hasWon } from './helpers';
 
 export function nextValue(grid: Grid): boolean {
   return grid.filter(cell => cell != undefined).length % 2 == 0;
@@ -11,5 +11,17 @@ export function makeMove(grid: Grid, move: Move, forX: (grid: Grid) => boolean):
 }
 
 export function hasGameEnded(grid: Grid): boolean {
-  return hasXWon(grid) || hasOWon(grid) || isDraw(grid);
+  return hasXWon(grid) || hasOWon(grid) || isFull(grid);
+}
+
+export function hasXWon(grid: Grid): boolean {
+  return hasWon(grid, true);
+}
+
+export function hasOWon(grid: Grid): boolean {
+  return hasWon(grid, false);
+}
+
+export function isFull(grid: Grid): boolean {
+  return grid.every(cell => cell != undefined);
 }
