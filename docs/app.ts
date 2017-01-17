@@ -10,12 +10,18 @@ const xPlayed = function (index: number) {
   cells[result as number].className = 'cell O';
 };
 
-document.querySelector('.grid').addEventListener('click', function (ev) {
-  let target = ev.target as HTMLElement,
+document.querySelector('.grid').addEventListener('click', event => {
+  let target = event.target as HTMLElement,
     tagName = target.tagName;
   if (tagName !== 'DIV' && tagName !== 'SPAN') return false;
   if (tagName === 'SPAN') target = target.parentNode as HTMLElement;
   if (target.className !== 'cell') return false;
   target.className = 'cell X';
   xPlayed(cells.indexOf(target));
+});
+
+document.querySelector('.new').addEventListener('click', event => {
+  event.stopPropagation();
+  event.preventDefault();
+  cells.forEach(cell => cell.className = 'cell');
 });
