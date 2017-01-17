@@ -47,15 +47,27 @@
 	"use strict";
 	var src_1 = __webpack_require__(1);
 	var cells = Array.from(document.querySelectorAll('.cell'));
+	var resultDiv = document.querySelector('.result');
+	var gameEnded = function (grid) {
+	    resultDiv.className =
+	        src_1.hasXWon(grid)
+	            ? 'result x won'
+	            : src_1.hasOWon(grid)
+	                ? 'result o won'
+	                : 'result drawn';
+	};
+	var readGrid = function () { return cells.map(function (x, i) { return x.className === 'cell X' ? true : x.className === 'cell O' ? false : undefined; }); };
 	var xPlayed = function (index) {
 	    console.log(index);
-	    var grid = cells.map(function (x, i) { return x.className === 'cell X' ? true : x.className === 'cell O' ? false : undefined; });
+	    var grid = readGrid();
+	    if (src_1.hasGameEnded(grid))
+	        return gameEnded(grid);
 	    var result = src_1.getBestMove(grid);
 	    console.log(result);
-	    if (result == undefined)
-	        console.log('Game already over');
-	    else
-	        cells[result].className = 'cell O';
+	    cells[result].className = 'cell O';
+	    var newGrid = readGrid();
+	    if (src_1.hasGameEnded(newGrid))
+	        gameEnded(newGrid);
 	};
 	document.querySelector('.grid').addEventListener('click', function (event) {
 	    var target = event.target, tagName = target.tagName;
@@ -72,6 +84,7 @@
 	    event.stopPropagation();
 	    event.preventDefault();
 	    cells.forEach(function (cell) { return cell.className = 'cell'; });
+	    resultDiv.className = 'result';
 	});
 
 
@@ -82,6 +95,10 @@
 	"use strict";
 	var search_1 = __webpack_require__(2);
 	exports.getBestMove = search_1.getBestMove;
+	var game_1 = __webpack_require__(8);
+	exports.hasGameEnded = game_1.hasGameEnded;
+	exports.hasXWon = game_1.hasXWon;
+	exports.hasOWon = game_1.hasOWon;
 
 
 /***/ },
@@ -253,9 +270,21 @@
 	}
 	exports.makeMove = makeMove;
 	function hasGameEnded(grid) {
-	    return helpers_1.hasXWon(grid) || helpers_1.hasOWon(grid) || helpers_1.isDraw(grid);
+	    return hasXWon(grid) || hasOWon(grid) || isFull(grid);
 	}
 	exports.hasGameEnded = hasGameEnded;
+	function hasXWon(grid) {
+	    return helpers_1.hasWon(grid, true);
+	}
+	exports.hasXWon = hasXWon;
+	function hasOWon(grid) {
+	    return helpers_1.hasWon(grid, false);
+	}
+	exports.hasOWon = hasOWon;
+	function isFull(grid) {
+	    return grid.every(function (cell) { return cell != undefined; });
+	}
+	exports.isFull = isFull;
 
 
 /***/ },
@@ -272,18 +301,7 @@
 	        || doesAnyArrayHaveAll(utils_1.getColumns(grid), forX)
 	        || doesAnyArrayHaveAll(utils_1.getDiagonals(grid), forX);
 	}
-	function hasXWon(grid) {
-	    return hasWon(grid, true);
-	}
-	exports.hasXWon = hasXWon;
-	function hasOWon(grid) {
-	    return hasWon(grid, false);
-	}
-	exports.hasOWon = hasOWon;
-	function isDraw(grid) {
-	    return grid.filter(function (cell) { return cell != undefined; }).length === grid.length;
-	}
-	exports.isDraw = isDraw;
+	exports.hasWon = hasWon;
 
 
 /***/ },
