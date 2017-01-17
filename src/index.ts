@@ -1,5 +1,3 @@
 import { getBestMove } from './search';
 
-export default {
-  getBestMove
-};
+export  { getBestMove };
