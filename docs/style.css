@@ -1,204 +1,204 @@
 html, body {
-    height: 100%;
-    width: 100%;
-    background: #9c27b0;
-    margin: 0;
-    padding: 0;
-    font-family: 'Raleway', Arial, Helvetica, sans-serif;
-    color: white;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background: #9c27b0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  color: white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *, *:before, *:after {
-    -webkit-box-sizing: inherit;
-    -moz-box-sizing: inherit;
-    box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 .container {
-    width: 100%;
-    max-width: 540px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-top: 80px;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 20px;
+  padding-top: 80px;
 }
 
 h1 {
-    display: block;
-    float: left;
-    font-weight: 100;
-    font-size: 3em;
-    margin: 0;
+  display: block;
+  float: left;
+  font-weight: 100;
+  font-size: 3em;
+  margin: 0;
 }
 
 .actions {
-    float: right;
-    list-style: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
+  float: right;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .scores {
-    float: right;
-    text-align: right;
+  float: right;
+  text-align: right;
 }
 
 .score {
-    position: relative;
-    display: inline-block;
-    background: white;
-    padding: 15px 25px;
-    font-size: 1.5em;
-    line-height: 3em;
-    font-weight: bold;
-    border-radius: 3px;
-    color: #9c27b0;
-    margin-top: 8px;
-    text-align: center;
-    margin-left: 5px;
-    width: 3em;
-    height: 2.5em;
+  position: relative;
+  display: inline-block;
+  background: white;
+  padding: 15px 25px;
+  font-size: 1.5em;
+  line-height: 3em;
+  font-weight: bold;
+  border-radius: 3px;
+  color: #9c27b0;
+  margin-top: 8px;
+  text-align: center;
+  margin-left: 5px;
+  width: 3em;
+  height: 2.5em;
 }
 
 .score span {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 4px;
-    padding-top: 10px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px;
+  padding-top: 10px;
 }
 
 .score span::after {
-    position: absolute;
-    width: 100%;
-    top: 10px;
-    left: 0;
-    text-transform: uppercase;
-    font-size: 13px;
-    line-height: 13px;
-    text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  left: 0;
+  text-transform: uppercase;
+  font-size: 13px;
+  line-height: 13px;
+  text-align: center;
 }
 
 .player.score span::after {
-    content: 'you'
+  content: 'you'
 }
 
 .ai.score span::after {
-    content: 'ai';
+  content: 'ai';
 }
 
 .info {
-    clear: left;
+  clear: left;
 }
 
 .info p {
-    margin-bottom: 20px;
-    float:left;
-    line-height: 3em;
+  margin-bottom: 20px;
+  float: left;
+  line-height: 3em;
 }
 
 a {
-    color: white;
+  color: white;
 }
 
 a.new {
-    text-transform: uppercase;
-    border-radius: 2px;
-    border: 1px solid white;
-    padding: 0 28px;
-    text-decoration: none;
-    height: 3em;
-    line-height: 3em;
-    cursor: pointer;
-    display: block;
-    text-align: center;
-    float: right;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid white;
+  padding: 0 28px;
+  text-decoration: none;
+  height: 3em;
+  line-height: 3em;
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  float: right;
 }
 
 a.new:hover {
-    text-decoration: none;
-    background: white;
-    color:#9c27b0;
-    cursor: pointer;
+  text-decoration: none;
+  background: white;
+  color: #9c27b0;
+  cursor: pointer;
 }
 
 .container, .panel, .grid {
-    overflow: auto;
+  overflow: auto;
 }
 
 .panel {
-    position: relative;
-    clear: left;
+  position: relative;
+  clear: left;
 }
 
 .cell {
-    height: 33.33%;
-    width: 33.33%;
-    background: white;
-    color: #9c27b0;
-    display: block;
-    padding: 16.66%;
-    box-sizing: border-box;
-    float: left;
-    position: relative;
+  height: 33.33%;
+  width: 33.33%;
+  background: white;
+  color: #9c27b0;
+  display: block;
+  padding: 16.66%;
+  box-sizing: border-box;
+  float: left;
+  position: relative;
 }
 
 .cell:first-child, .cell:nth-child(3n + 1) {
-    clear: left;
+  clear: left;
 }
 
 .cell span {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 1px solid #9c27b0;
-    font-weight: 700;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #9c27b0;
+  font-weight: 700;
 }
 
 .cell.X span {
-    background: #68efad;
+  background: #68efad;
 }
 
 .cell.O span {
-    background: #ff8a80;
+  background: #ff8a80;
 }
 
 .cell.O span::after, .cell.X::after {
-    position: absolute;
-    bottom: 4px;
-    right: 4px;
-    color: rgba(0,0,0,0.38);
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  color: rgba(0, 0, 0, 0.38);
 }
 
 .cell.X span::after {
-    content: 'X';
+  content: 'X';
 }
 
 .cell.O span::after {
-    content: 'O';
+  content: 'O';
 }
 
 header, footer {
-    overflow: auto;
+  overflow: auto;
 }
 
 main {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 footer {
-    padding: 20px 0;
-    text-align: center;
+  padding: 20px 0;
+  text-align: center;
 }
 
 footer div {
-    margin-top: 10px;
+  margin-top: 10px;
 }
