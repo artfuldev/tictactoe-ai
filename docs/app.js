@@ -52,7 +52,10 @@
 	    var grid = cells.map(function (x, i) { return x.className === 'cell X' ? true : x.className === 'cell O' ? false : undefined; });
 	    var result = src_1.getBestMove(grid);
 	    console.log(result);
-	    cells[result].className = 'cell O';
+	    if (result == undefined)
+	        console.log('Game already over');
+	    else
+	        cells[result].className = 'cell O';
 	};
 	document.querySelector('.grid').addEventListener('click', function (event) {
 	    var target = event.target, tagName = target.tagName;
