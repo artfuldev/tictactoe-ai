@@ -2,12 +2,22 @@ import { getBestMove, hasGameEnded, hasXWon, hasOWon } from '../src';
 
 const cells = Array.from(document.querySelectorAll('.cell'));
 const resultDiv = document.querySelector('.result');
+const youScoreSpan = document.querySelector('.player.score span') as HTMLElement;
+const aiScoreSpan = document.querySelector('.ai.score span') as HTMLElement;
+
+const incrementScore = (scoreSpan: HTMLElement) => {
+  const score = parseInt(scoreSpan.innerText);
+  scoreSpan.innerText = (score + 1).toString();
+}
 
 const gameEnded = (grid: boolean[]) => {
+  const oWon = hasOWon(grid);
+  const xWon = hasXWon(grid);
+  if (xWon || oWon) incrementScore(xWon ? youScoreSpan : aiScoreSpan);
   resultDiv.className =
-    hasXWon(grid)
+    xWon
       ? 'result x won'
-      : hasOWon(grid)
+      : oWon
         ? 'result o won'
         : 'result drawn';
 }
@@ -17,12 +27,12 @@ const readGrid = () => cells.map((x, i) => x.className === 'cell X' ? true : x.c
 const xPlayed = function (index: number) {
   console.log(index);
   const grid = readGrid();
-  if(hasGameEnded(grid)) return gameEnded(grid);
+  if (hasGameEnded(grid)) return gameEnded(grid);
   const result = getBestMove(grid);
   console.log(result);
   cells[result as number].className = 'cell O';
   const newGrid = readGrid();
-  if(hasGameEnded(newGrid)) gameEnded(newGrid);
+  if (hasGameEnded(newGrid)) gameEnded(newGrid);
 };
 
 document.querySelector('.grid').addEventListener('click', event => {

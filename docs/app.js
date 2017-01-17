@@ -48,11 +48,21 @@
 	var src_1 = __webpack_require__(1);
 	var cells = Array.from(document.querySelectorAll('.cell'));
 	var resultDiv = document.querySelector('.result');
+	var youScoreSpan = document.querySelector('.player.score span');
+	var aiScoreSpan = document.querySelector('.ai.score span');
+	var incrementScore = function (scoreSpan) {
+	    var score = parseInt(scoreSpan.innerText);
+	    scoreSpan.innerText = (score + 1).toString();
+	};
 	var gameEnded = function (grid) {
+	    var oWon = src_1.hasOWon(grid);
+	    var xWon = src_1.hasXWon(grid);
+	    if (xWon || oWon)
+	        incrementScore(xWon ? youScoreSpan : aiScoreSpan);
 	    resultDiv.className =
-	        src_1.hasXWon(grid)
+	        xWon
 	            ? 'result x won'
-	            : src_1.hasOWon(grid)
+	            : oWon
 	                ? 'result o won'
 	                : 'result drawn';
 	};
