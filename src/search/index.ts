@@ -1,13 +1,14 @@
 import { getMoves } from '../moves';
 import { evaluate } from '../evaluation';
-import { makeMove, hasGameEnded } from '../game';
+import { nextValue, makeMove, hasGameEnded } from '../game';
 import { Grid, Move } from '../definitions';
 import { alphaBeta } from './alphaBeta';
 
-export function getBestMove(grid: Grid, forX: (grid: Grid) => boolean,
+export function getBestMove(grid: Grid, forX?: (grid: Grid) => boolean,
   depth?: number): Move {
   const moves = getMoves(grid);
   if (depth == undefined) depth = moves.length;
+  if(forX == undefined) forX = nextValue;
   const isX = forX(grid);
   const movesWithScores = moves.map(move => {
     const newGrid = makeMove(grid, move, forX);
