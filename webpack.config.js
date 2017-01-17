@@ -11,7 +11,7 @@ module.exports = {
   },
   // Add minification
   plugins: [
-    new webpack.optimize.UglifyJsPlugin()
+    // new webpack.optimize.UglifyJsPlugin()
   ],
   module: {
     loaders: [

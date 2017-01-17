@@ -1,2 +1,291 @@
-!function(t){function n(r){if(e[r])return e[r].exports;var u=e[r]={exports:{},id:r,loaded:!1};return t[r].call(u.exports,u,u.exports,n),u.loaded=!0,u.exports}var e={};return n.m=t,n.c=e,n.p="",n(0)}([function(t,n,e){"use strict";var r=e(1);Object.defineProperty(n,"__esModule",{value:!0}),n.default={getBestMove:r.getBestMove}},function(t,n,e){"use strict";function r(t,n,e){var r=u.getMoves(t);void 0==e&&(e=r.length);var c=n(t),f=r.map(function(r){var f=a.makeMove(t,r,n),s=i.alphaBeta(f,e,-(1/0),1/0,!c,o.evaluate,a.hasGameEnded,function(t){return u.getMoves(t).map(function(e){return a.makeMove(t,e,n)})});return{move:r,score:c?s:-s}}),s=f.sort(function(t,n){return n.score-t.score}),l=s.map(function(t){return t.move});return l[0]}var u=e(2),o=e(3),a=e(7),i=e(9);n.getBestMove=r},function(t,n){"use strict";function e(t){return t.map(function(t,n){return void 0==t?n:void 0}).filter(function(t){return void 0!=t})}n.getMoves=e},function(t,n,e){"use strict";function r(t){return u.evaluateRows(t)+u.evaluateColumns(t)+u.evaluateDiagonals(t)}var u=e(4);n.evaluate=r},function(t,n,e){"use strict";function r(t){return c.getRows(t).map(a).reduce(function(t,n){return t+n},0)}function u(t){return c.getColumns(t).map(a).reduce(function(t,n){return t+n},0)}function o(t){return c.getDiagonals(t).map(a).reduce(function(t,n){return t+n},0)}function a(t){var n=t.length;if(0===n)return 0;var e={undefined:0,true:0,false:0},r=t.reduce(function(t,n){return i(t,n)},e);return r.undefined===n?0:r.true===n?1/0:r.false===n?-(1/0):0===r.false?Math.pow(2,r.true):0===r.true?-Math.pow(2,r.false):0}function i(t,n){var e={};for(var r in t)t.hasOwnProperty(r)&&(e[r]=t[r]);return e[n+""]++,e}var c=e(5);n.evaluateRows=r,n.evaluateColumns=u,n.evaluateDiagonals=o,n.evaluateCells=a},function(t,n,e){"use strict";function r(t){return Array.apply(null,{length:t}).map(Number.call,Number)}function u(t){var n=Math.sqrt(t.length),e=t.concat([]);return r(n).map(function(){return e.splice(0,n)})}function o(t){return u(i.transpose(t))}function a(t){var n=Math.sqrt(t.length),e=n-1,r=t.length-1;return[t.filter(function(t,e){return Math.floor(e/n)===e%n}),t.filter(function(t,n){return n>0&&n<r&&n%e===0})]}var i=e(6);n.getRows=u,n.getColumns=o,n.getDiagonals=a},function(t,n){"use strict";function e(t){var n=Math.sqrt(t.length);return t.map(function(e,r){return t[Math.floor(r/n)+r%n*n]})}n.transpose=e},function(t,n,e){"use strict";function r(t){return t.filter(function(t){return void 0!=t}).length%2==0}function u(t,n,e){var r=e(t);return t.map(function(t,e){return e==n?r:t})}function o(t){return a.hasXWon(t)||a.hasOWon(t)||a.isDraw(t)}var a=e(8);n.nextValue=r,n.makeMove=u,n.hasGameEnded=o},function(t,n,e){"use strict";function r(t,n){return t.some(function(t){return t.every(function(t){return t===n})})}function u(t,n){return r(c.getRows(t),n)||r(c.getColumns(t),n)||r(c.getDiagonals(t),n)}function o(t){return u(t,!0)}function a(t){return u(t,!1)}function i(t){return t.filter(function(t){return void 0!=t}).length===t.length}var c=e(5);n.hasXWon=o,n.hasOWon=a,n.isDraw=i},function(t,n){"use strict";function e(t,n,r,u,o,a,i,c){if(0==n||i(t))return a(t);if(o){for(var f=-(1/0),s=c(t),l=0;l<s.length;l++){var v=s[l];if(f=Math.max(f,e(v,n-1,r,u,!1,a,i,c)),r=Math.max(r,f),u<=r)break}return f}for(var g=1/0,h=c(t),l=0;l<h.length;l++){var v=h[l];if(g=Math.min(g,e(v,n-1,r,u,!1,a,i,c)),u=Math.min(u,g),u<=r)break}return g}n.alphaBeta=e}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var search_1 = __webpack_require__(1);
+	Object.defineProperty(exports, "__esModule", { value: true });
+	exports.default = {
+	    getBestMove: search_1.getBestMove
+	};
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var moves_1 = __webpack_require__(2);
+	var evaluation_1 = __webpack_require__(3);
+	var game_1 = __webpack_require__(7);
+	var alphaBeta_1 = __webpack_require__(9);
+	function getBestMove(grid, forX, depth) {
+	    var moves = moves_1.getMoves(grid);
+	    if (depth == undefined)
+	        depth = moves.length;
+	    var isX = forX(grid);
+	    var movesWithScores = moves.map(function (move) {
+	        var newGrid = game_1.makeMove(grid, move, forX);
+	        var evaluation = alphaBeta_1.alphaBeta(newGrid, depth, -Infinity, Infinity, !isX, evaluation_1.evaluate, game_1.hasGameEnded, function (grid) { return moves_1.getMoves(grid).map(function (move) { return game_1.makeMove(grid, move, forX); }); });
+	        return {
+	            move: move,
+	            score: isX ? evaluation : -evaluation
+	        };
+	    });
+	    var sortedMovesWithScores = movesWithScores.sort(function (a, b) { return b.score - a.score; });
+	    var sortedMoves = sortedMovesWithScores.map(function (x) { return x.move; });
+	    // Return the move with the best evaluation so far
+	    return sortedMoves[0];
+	}
+	exports.getBestMove = getBestMove;
+
+
+/***/ },
+/* 2 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function getMoves(grid) {
+	    return grid
+	        .map(function (value, index) { return value == undefined ? index : undefined; })
+	        .filter(function (value) { return value != undefined; });
+	}
+	exports.getMoves = getMoves;
+
+
+/***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var helpers_1 = __webpack_require__(4);
+	function evaluate(grid) {
+	    return helpers_1.evaluateRows(grid) + helpers_1.evaluateColumns(grid) + helpers_1.evaluateDiagonals(grid);
+	}
+	exports.evaluate = evaluate;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var utils_1 = __webpack_require__(5);
+	function evaluateRows(grid) {
+	    return utils_1.getRows(grid)
+	        .map(evaluateCells)
+	        .reduce(function (x, y) { return x + y; }, 0);
+	}
+	exports.evaluateRows = evaluateRows;
+	function evaluateColumns(grid) {
+	    return utils_1.getColumns(grid)
+	        .map(evaluateCells)
+	        .reduce(function (x, y) { return x + y; }, 0);
+	}
+	exports.evaluateColumns = evaluateColumns;
+	function evaluateDiagonals(grid) {
+	    return utils_1.getDiagonals(grid)
+	        .map(evaluateCells)
+	        .reduce(function (x, y) { return x + y; }, 0);
+	}
+	exports.evaluateDiagonals = evaluateDiagonals;
+	function evaluateCells(cells) {
+	    var length = cells.length;
+	    if (length === 0)
+	        return 0;
+	    var initial = { undefined: 0, true: 0, false: 0 };
+	    var counts = cells.reduce(function (counts, cell) { return increment(counts, cell); }, initial);
+	    if (counts.undefined === length)
+	        return 0;
+	    if (counts.true === length)
+	        return Infinity;
+	    if (counts.false === length)
+	        return -Infinity;
+	    if (counts.false === 0)
+	        return Math.pow(2, counts.true);
+	    if (counts.true === 0)
+	        return -Math.pow(2, counts.false);
+	    return 0;
+	}
+	exports.evaluateCells = evaluateCells;
+	function increment(obj, key) {
+	    var newObj = {};
+	    for (var prop in obj)
+	        if (obj.hasOwnProperty(prop))
+	            newObj[prop] = obj[prop];
+	    newObj[key + '']++;
+	    return newObj;
+	}
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var helpers_1 = __webpack_require__(6);
+	function getArray(length) {
+	    return Array.apply(null, { length: length }).map(Number.call, Number);
+	}
+	function getRows(grid) {
+	    var size = Math.sqrt(grid.length);
+	    var copy = grid.concat([]);
+	    return getArray(size).map(function () { return copy.splice(0, size); });
+	}
+	exports.getRows = getRows;
+	function getColumns(grid) {
+	    return getRows(helpers_1.transpose(grid));
+	}
+	exports.getColumns = getColumns;
+	function getDiagonals(grid) {
+	    var size = Math.sqrt(grid.length);
+	    var lesser = size - 1;
+	    var last = grid.length - 1;
+	    return [
+	        grid.filter(function (x, i) { return Math.floor(i / size) === i % size; }),
+	        grid.filter(function (x, i) { return i > 0 && i < last && i % lesser === 0; })
+	    ];
+	}
+	exports.getDiagonals = getDiagonals;
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function transpose(grid) {
+	    var size = Math.sqrt(grid.length);
+	    return grid.map(function (x, i) { return grid[Math.floor(i / size) + ((i % size) * size)]; });
+	}
+	exports.transpose = transpose;
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var helpers_1 = __webpack_require__(8);
+	function nextValue(grid) {
+	    return grid.filter(function (cell) { return cell != undefined; }).length % 2 == 0;
+	}
+	exports.nextValue = nextValue;
+	function makeMove(grid, move, forX) {
+	    var newValue = forX(grid);
+	    return grid.map(function (value, index) { return index == move ? newValue : value; });
+	}
+	exports.makeMove = makeMove;
+	function hasGameEnded(grid) {
+	    return helpers_1.hasXWon(grid) || helpers_1.hasOWon(grid) || helpers_1.isDraw(grid);
+	}
+	exports.hasGameEnded = hasGameEnded;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	var utils_1 = __webpack_require__(5);
+	function doesAnyArrayHaveAll(cellsArray, value) {
+	    return cellsArray.some(function (cells) { return cells.every(function (cell) { return cell === value; }); });
+	}
+	function hasWon(grid, forX) {
+	    return doesAnyArrayHaveAll(utils_1.getRows(grid), forX)
+	        || doesAnyArrayHaveAll(utils_1.getColumns(grid), forX)
+	        || doesAnyArrayHaveAll(utils_1.getDiagonals(grid), forX);
+	}
+	function hasXWon(grid) {
+	    return hasWon(grid, true);
+	}
+	exports.hasXWon = hasXWon;
+	function hasOWon(grid) {
+	    return hasWon(grid, false);
+	}
+	exports.hasOWon = hasOWon;
+	function isDraw(grid) {
+	    return grid.filter(function (cell) { return cell != undefined; }).length === grid.length;
+	}
+	exports.isDraw = isDraw;
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	"use strict";
+	function alphaBeta(node, depth, alpha, beta, isMaximizingPlayer, evaluate, isTerminalNode, getChildren) {
+	    if (depth == 0 || isTerminalNode(node))
+	        return evaluate(node);
+	    if (isMaximizingPlayer) {
+	        var score_1 = -Infinity;
+	        var children_1 = getChildren(node);
+	        for (var i = 0; i < children_1.length; i++) {
+	            var child = children_1[i];
+	            score_1 = Math.max(score_1, alphaBeta(child, depth - 1, alpha, beta, false, evaluate, isTerminalNode, getChildren));
+	            alpha = Math.max(alpha, score_1);
+	            if (beta <= alpha)
+	                break;
+	        }
+	        return score_1;
+	    }
+	    var score = Infinity;
+	    var children = getChildren(node);
+	    for (var i = 0; i < children.length; i++) {
+	        var child = children[i];
+	        score = Math.min(score, alphaBeta(child, depth - 1, alpha, beta, false, evaluate, isTerminalNode, getChildren));
+	        beta = Math.min(beta, score);
+	        if (beta <= alpha)
+	            break;
+	    }
+	    return score;
+	}
+	exports.alphaBeta = alphaBeta;
+
+
+/***/ }
+/******/ ]);
 //# sourceMappingURL=tictactoe-ai.js.map
