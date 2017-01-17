@@ -1,5 +1,49 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>TicTacToe AI</title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>TicTacToe AI</title>
+  <meta name="description" content="A simple AI for tic tac toe written in TypeScript by Sudarsan Balaji">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="root">
+      <div class="container">
+        <header>
+          <div class="title bar">
+            <h1>Tic Tac Toe</h1>
+            <div class="scores">
+              <div class="player score"><span>0</span></div>
+              <div class="ai score"><span>0</span></div>
+            </div>
+          </div>
+          <div class="info">
+            <p>Click on the <strong>nine tiles you see</strong> to win!</p><a class="new">New Game</a></div>
+        </header>
+        <main>
+          <div class="panel">
+            <div class="grid">
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+              <div class="cell"><span class="normal"></span></div>
+            </div>
+          </div>
+        </main>
+        <footer>Made with <span class="heart">❤</span> by <a class="author" href="https://github.com/artfuldev">@artfuldev</a>
+          <div><a class="source" href="https://github.com/artfuldev/tictactoe-ai/">View Source</a></div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="app.js" type="text/javascript"></script>
+</body>
+
 </html>
