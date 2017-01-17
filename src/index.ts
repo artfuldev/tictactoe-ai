@@ -1,1 +1,5 @@
-export default {};
+import { getBestMove } from './search';
+
+export default {
+  getBestMove
+};
