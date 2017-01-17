@@ -119,7 +119,7 @@
 	var moves_1 = __webpack_require__(3);
 	var evaluation_1 = __webpack_require__(4);
 	var game_1 = __webpack_require__(8);
-	var alphaBeta_1 = __webpack_require__(10);
+	var minimax_1 = __webpack_require__(10);
 	function getBestMove(grid, forX, depth) {
 	    var moves = moves_1.getMoves(grid);
 	    if (depth == undefined)
@@ -129,10 +129,10 @@
 	    var isX = forX(grid);
 	    var movesWithScores = moves.map(function (move) {
 	        var newGrid = game_1.makeMove(grid, move, forX);
-	        var evaluation = alphaBeta_1.alphaBeta(newGrid, depth, -Infinity, Infinity, !isX, evaluation_1.evaluate, game_1.hasGameEnded, function (grid) { return moves_1.getMoves(grid).map(function (move) { return game_1.makeMove(grid, move, forX); }); });
+	        var score = minimax_1.minimax(newGrid, depth, !isX, evaluation_1.evaluate, game_1.hasGameEnded, function (grid) { return moves_1.getMoves(grid).map(function (move) { return game_1.makeMove(grid, move, forX); }); });
 	        return {
 	            move: move,
-	            score: isX ? evaluation : -evaluation
+	            score: isX ? score : -score
 	        };
 	    });
 	    var sortedMovesWithScores = movesWithScores.sort(function (a, b) { return b.score - a.score; });
@@ -319,33 +319,16 @@
 /***/ function(module, exports) {
 
 	"use strict";
-	function alphaBeta(node, depth, alpha, beta, isMaximizingPlayer, evaluate, isTerminalNode, getChildren) {
+	function minimax(node, depth, maximizingPlayer, evaluate, isTerminalNode, getChildren) {
 	    if (depth == 0 || isTerminalNode(node))
 	        return evaluate(node);
-	    if (isMaximizingPlayer) {
-	        var score_1 = -Infinity;
-	        var children_1 = getChildren(node);
-	        for (var i = 0; i < children_1.length; i++) {
-	            var child = children_1[i];
-	            score_1 = Math.max(score_1, alphaBeta(child, depth - 1, alpha, beta, false, evaluate, isTerminalNode, getChildren));
-	            alpha = Math.max(alpha, score_1);
-	            if (beta <= alpha)
-	                break;
-	        }
-	        return score_1;
-	    }
-	    var score = Infinity;
-	    var children = getChildren(node);
-	    for (var i = 0; i < children.length; i++) {
-	        var child = children[i];
-	        score = Math.min(score, alphaBeta(child, depth - 1, alpha, beta, false, evaluate, isTerminalNode, getChildren));
-	        beta = Math.min(beta, score);
-	        if (beta <= alpha)
-	            break;
-	    }
-	    return score;
+	    if (maximizingPlayer)
+	        return getChildren(node)
+	            .reduce(function (best, child) { return Math.max(best, minimax(child, depth - 1, false, evaluate, isTerminalNode, getChildren)); }, -Infinity);
+	    return getChildren(node)
+	        .reduce(function (best, child) { return Math.min(best, minimax(child, depth - 1, true, evaluate, isTerminalNode, getChildren)); }, Infinity);
 	}
-	exports.alphaBeta = alphaBeta;
+	exports.minimax = minimax;
 
 
 /***/ }
