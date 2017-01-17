@@ -54,8 +54,8 @@
 	    console.log(result);
 	    cells[result].className = 'cell O';
 	};
-	document.querySelector('.grid').addEventListener('click', function (ev) {
-	    var target = ev.target, tagName = target.tagName;
+	document.querySelector('.grid').addEventListener('click', function (event) {
+	    var target = event.target, tagName = target.tagName;
 	    if (tagName !== 'DIV' && tagName !== 'SPAN')
 	        return false;
 	    if (tagName === 'SPAN')
@@ -64,6 +64,11 @@
 	        return false;
 	    target.className = 'cell X';
 	    xPlayed(cells.indexOf(target));
+	});
+	document.querySelector('.new').addEventListener('click', function (event) {
+	    event.stopPropagation();
+	    event.preventDefault();
+	    cells.forEach(function (cell) { return cell.className = 'cell'; });
 	});
 
 
