@@ -163,35 +163,27 @@ a.new:hover {
     font-weight: 700;
 }
 
-.highlighted, .selected, .correct {
+.cell.X span {
     background: #68efad;
 }
 
-.wrong {
+.cell.O span {
     background: #ff8a80;
 }
 
-.missed {
-    background: #ffd180;
-}
-
-.correct::after, .wrong::after, .missed::after {
+.cell.O span::after, .cell.X::after {
     position: absolute;
     bottom: 4px;
     right: 4px;
     color: rgba(0,0,0,0.38);
 }
 
-.correct::after {
-    content: 'correct';
+.cell.X span::after {
+    content: 'X';
 }
 
-.wrong::after {
-    content: 'wrong';
-}
-
-.missed::after {
-    content: 'missed';
+.cell.O span::after {
+    content: 'O';
 }
 
 header, footer {
