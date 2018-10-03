@@ -1,25 +1,22 @@
 import { getRows, getColumns, getDiagonals } from '../utils';
 import { Grid, Cell } from '../definitions';
 
-export function evaluateRows(grid: Grid): number {
-  return getRows(grid)
+export const evaluateRows = (grid: Grid) =>
+  getRows(grid)
     .map(evaluateCells)
     .reduce((x, y) => x + y, 0);
-}
 
-export function evaluateColumns(grid: Grid): number {
-  return getColumns(grid)
+export const evaluateColumns = (grid: Grid) =>
+  getColumns(grid)
     .map(evaluateCells)
     .reduce((x, y) => x + y, 0);
-}
 
-export function evaluateDiagonals(grid: Grid): number {
-  return getDiagonals(grid)
+export const evaluateDiagonals = (grid: Grid) =>
+  getDiagonals(grid)
     .map(evaluateCells)
     .reduce((x, y) => x + y, 0);
-}
 
-export function evaluateCells(cells: Cell[]): number {
+export const evaluateCells = (cells: Cell[]) => {
   const length = cells.length;
   if(length === 0) return 0;
   const initial = { undefined: 0, true: 0, false: 0 };
@@ -32,7 +29,7 @@ export function evaluateCells(cells: Cell[]): number {
   return 0;
 }
 
-function increment<T>(obj: T, key: any): T {
+const increment = <T>(obj: T, key: any) => {
   const newObj = {} as T;
   for(let prop in obj)
     if(obj.hasOwnProperty(prop))

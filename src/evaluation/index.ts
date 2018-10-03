@@ -1,6 +1,5 @@
 import { Grid } from '../definitions';
 import { evaluateRows, evaluateColumns, evaluateDiagonals } from './helpers';
 
-export function evaluate(grid: Grid): number {
-  return evaluateRows(grid) + evaluateColumns(grid) + evaluateDiagonals(grid);
-}
+export const evaluate = (grid: Grid) =>
+  evaluateRows(grid) + evaluateColumns(grid) + evaluateDiagonals(grid);

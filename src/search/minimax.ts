@@ -1,10 +1,10 @@
-export function minimax<TNode>(
+export const minimax = <TNode>(
   node: TNode,
   depth: number,
   maximizingPlayer: boolean,
   evaluate: (n: TNode) => number,
   isTerminalNode: (n: TNode) => boolean,
-  getChildren: (n: TNode) => TNode[]): number {
+  getChildren: (n: TNode) => TNode[]): number => {
   if (depth == 0 || isTerminalNode(node)) return evaluate(node);
   if (maximizingPlayer)
     return getChildren(node)
