@@ -123,7 +123,7 @@
 	var evaluation_1 = __webpack_require__(4);
 	var game_1 = __webpack_require__(8);
 	var minimax_1 = __webpack_require__(10);
-	function getBestMove(grid, forX, depth) {
+	exports.getBestMove = function (grid, forX, depth) {
 	    var moves = moves_1.getMoves(grid);
 	    if (depth == undefined)
 	        depth = moves.length;
@@ -143,8 +143,7 @@
 	    var sortedMoves = sortedMovesWithScores.map(function (x) { return x.move; });
 	    // Return the move with the best evaluation so far
 	    return sortedMoves[0];
-	}
-	exports.getBestMove = getBestMove;
+	};
 
 
 /***/ }),
@@ -168,10 +167,9 @@
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var helpers_1 = __webpack_require__(5);
-	function evaluate(grid) {
+	exports.evaluate = function (grid) {
 	    return helpers_1.evaluateRows(grid) + helpers_1.evaluateColumns(grid) + helpers_1.evaluateDiagonals(grid);
-	}
-	exports.evaluate = evaluate;
+	};
 
 
 /***/ }),
@@ -181,25 +179,22 @@
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var utils_1 = __webpack_require__(6);
-	function evaluateRows(grid) {
+	exports.evaluateRows = function (grid) {
 	    return utils_1.getRows(grid)
-	        .map(evaluateCells)
+	        .map(exports.evaluateCells)
 	        .reduce(function (x, y) { return x + y; }, 0);
-	}
-	exports.evaluateRows = evaluateRows;
-	function evaluateColumns(grid) {
+	};
+	exports.evaluateColumns = function (grid) {
 	    return utils_1.getColumns(grid)
-	        .map(evaluateCells)
+	        .map(exports.evaluateCells)
 	        .reduce(function (x, y) { return x + y; }, 0);
-	}
-	exports.evaluateColumns = evaluateColumns;
-	function evaluateDiagonals(grid) {
+	};
+	exports.evaluateDiagonals = function (grid) {
 	    return utils_1.getDiagonals(grid)
-	        .map(evaluateCells)
+	        .map(exports.evaluateCells)
 	        .reduce(function (x, y) { return x + y; }, 0);
-	}
-	exports.evaluateDiagonals = evaluateDiagonals;
-	function evaluateCells(cells) {
+	};
+	exports.evaluateCells = function (cells) {
 	    var length = cells.length;
 	    if (length === 0)
 	        return 0;
@@ -216,16 +211,15 @@
 	    if (counts.true === 0)
 	        return -Math.pow(2, counts.false);
 	    return 0;
-	}
-	exports.evaluateCells = evaluateCells;
-	function increment(obj, key) {
+	};
+	var increment = function (obj, key) {
 	    var newObj = {};
 	    for (var prop in obj)
 	        if (obj.hasOwnProperty(prop))
 	            newObj[prop] = obj[prop];
 	    newObj[key + '']++;
 	    return newObj;
-	}
+	};
 
 
 /***/ }),
@@ -235,29 +229,24 @@
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var helpers_1 = __webpack_require__(7);
-	function getArray(length) {
+	var getArray = function (length) {
 	    return Array.apply(null, { length: length }).map(Number.call, Number);
-	}
-	function getRows(grid) {
+	};
+	exports.getRows = function (grid) {
 	    var size = Math.sqrt(grid.length);
 	    var copy = grid.concat([]);
 	    return getArray(size).map(function () { return copy.splice(0, size); });
-	}
-	exports.getRows = getRows;
-	function getColumns(grid) {
-	    return getRows(helpers_1.transpose(grid));
-	}
-	exports.getColumns = getColumns;
-	function getDiagonals(grid) {
+	};
+	exports.getColumns = function (grid) { return exports.getRows(helpers_1.transpose(grid)); };
+	exports.getDiagonals = function (grid) {
 	    var size = Math.sqrt(grid.length);
 	    var lesser = size - 1;
 	    var last = grid.length - 1;
 	    return [
-	        grid.filter(function (x, i) { return Math.floor(i / size) === i % size; }),
-	        grid.filter(function (x, i) { return i > 0 && i < last && i % lesser === 0; })
+	        grid.filter(function (_, i) { return Math.floor(i / size) === i % size; }),
+	        grid.filter(function (_, i) { return i > 0 && i < last && i % lesser === 0; })
 	    ];
-	}
-	exports.getDiagonals = getDiagonals;
+	};
 
 
 /***/ }),
@@ -266,11 +255,10 @@
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
-	function transpose(grid) {
+	exports.transpose = function (grid) {
 	    var size = Math.sqrt(grid.length);
 	    return grid.map(function (x, i) { return grid[Math.floor(i / size) + ((i % size) * size)]; });
-	}
-	exports.transpose = transpose;
+	};
 
 
 /***/ }),
@@ -280,31 +268,19 @@
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var helpers_1 = __webpack_require__(9);
-	function nextValue(grid) {
+	exports.nextValue = function (grid) {
 	    return grid.filter(function (cell) { return cell != undefined; }).length % 2 == 0;
-	}
-	exports.nextValue = nextValue;
-	function makeMove(grid, move, forX) {
+	};
+	exports.makeMove = function (grid, move, forX) {
 	    var newValue = forX(grid);
 	    return grid.map(function (value, index) { return index == move ? newValue : value; });
-	}
-	exports.makeMove = makeMove;
-	function hasGameEnded(grid) {
-	    return hasXWon(grid) || hasOWon(grid) || isFull(grid);
-	}
-	exports.hasGameEnded = hasGameEnded;
-	function hasXWon(grid) {
-	    return helpers_1.hasWon(grid, true);
-	}
-	exports.hasXWon = hasXWon;
-	function hasOWon(grid) {
-	    return helpers_1.hasWon(grid, false);
-	}
-	exports.hasOWon = hasOWon;
-	function isFull(grid) {
-	    return grid.every(function (cell) { return cell != undefined; });
-	}
-	exports.isFull = isFull;
+	};
+	exports.hasXWon = function (grid) { return helpers_1.hasWon(grid, true); };
+	exports.hasOWon = function (grid) { return helpers_1.hasWon(grid, false); };
+	exports.isFull = function (grid) { return grid.every(function (cell) { return cell != undefined; }); };
+	exports.hasGameEnded = function (grid) {
+	    return exports.hasXWon(grid) || exports.hasOWon(grid) || exports.isFull(grid);
+	};
 
 
 /***/ }),
@@ -314,15 +290,14 @@
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var utils_1 = __webpack_require__(6);
-	function doesAnyArrayHaveAll(cellsArray, value) {
+	var doesAnyArrayHaveAll = function (cellsArray, value) {
 	    return cellsArray.some(function (cells) { return cells.every(function (cell) { return cell === value; }); });
-	}
-	function hasWon(grid, forX) {
+	};
+	exports.hasWon = function (grid, forX) {
 	    return doesAnyArrayHaveAll(utils_1.getRows(grid), forX)
 	        || doesAnyArrayHaveAll(utils_1.getColumns(grid), forX)
 	        || doesAnyArrayHaveAll(utils_1.getDiagonals(grid), forX);
-	}
-	exports.hasWon = hasWon;
+	};
 
 
 /***/ }),
@@ -331,16 +306,15 @@
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
-	function minimax(node, depth, maximizingPlayer, evaluate, isTerminalNode, getChildren) {
+	exports.minimax = function (node, depth, maximizingPlayer, evaluate, isTerminalNode, getChildren) {
 	    if (depth == 0 || isTerminalNode(node))
 	        return evaluate(node);
 	    if (maximizingPlayer)
 	        return getChildren(node)
-	            .reduce(function (best, child) { return Math.max(best, minimax(child, depth - 1, false, evaluate, isTerminalNode, getChildren)); }, -Infinity);
+	            .reduce(function (best, child) { return Math.max(best, exports.minimax(child, depth - 1, false, evaluate, isTerminalNode, getChildren)); }, -Infinity);
 	    return getChildren(node)
-	        .reduce(function (best, child) { return Math.min(best, minimax(child, depth - 1, true, evaluate, isTerminalNode, getChildren)); }, Infinity);
-	}
-	exports.minimax = minimax;
+	        .reduce(function (best, child) { return Math.min(best, exports.minimax(child, depth - 1, true, evaluate, isTerminalNode, getChildren)); }, Infinity);
+	};
 
 
 /***/ })
