@@ -1,6 +1,12 @@
-export function alphaBeta<TNode>(node: TNode, depth: number, alpha: number,
-  beta: number, isMaximizingPlayer: boolean, evaluate: (node: TNode) => number,
-  isTerminalNode: (node: TNode) => boolean, getChildren: (node: TNode) => TNode[]) {
+export const alphaBeta = <TNode>(
+  node: TNode,
+  depth: number,
+  alpha: number,
+  beta: number,
+  isMaximizingPlayer: boolean,
+  evaluate: (node: TNode) => number,
+  isTerminalNode: (node: TNode) => boolean,
+  getChildren: (node: TNode) => TNode[]) => {
   if (depth == 0 || isTerminalNode(node)) return evaluate(node);
   if (isMaximizingPlayer) {
     let score = -Infinity;

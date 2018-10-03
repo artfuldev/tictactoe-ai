@@ -5,8 +5,7 @@ import { Grid, Move } from '../definitions';
 import { alphaBeta } from './alphaBeta';
 import { minimax } from './minimax';
 
-export function getBestMove(grid: Grid, forX?: (grid: Grid) => boolean,
-  depth?: number): Move {
+export const getBestMove = (grid: Grid, forX?: (grid: Grid) => boolean, depth?: number): Move => {
   const moves = getMoves(grid);
   if (depth == undefined) depth = moves.length;
   if (forX == undefined) forX = nextValue;
