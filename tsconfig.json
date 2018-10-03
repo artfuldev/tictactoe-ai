@@ -8,17 +8,15 @@
     "suppressImplicitAnyIndexErrors": true,
     "module": "commonjs",
     "target": "ES5",
-    "outDir": "./docs/"
-  },
-  "formatCodeOptions": {
-    "indentSize": 2,
-    "tabSize": 2
+    "outDir": "./docs/",
+    "lib": [
+      "dom",
+      "es5",
+      "es6"
+    ]
   },
   "files": [
     "src/index.ts"
-  ],
-  "filesGlob": [
-    "src/**/*.ts"
   ],
   "exclude": [
     "node_modules",

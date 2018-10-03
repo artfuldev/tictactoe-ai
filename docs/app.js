@@ -42,9 +42,10 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var src_1 = __webpack_require__(1);
 	var cells = Array.from(document.querySelectorAll('.cell'));
 	var resultDiv = document.querySelector('.result');
@@ -98,11 +99,12 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var search_1 = __webpack_require__(2);
 	exports.getBestMove = search_1.getBestMove;
 	var game_1 = __webpack_require__(8);
@@ -111,11 +113,12 @@
 	exports.hasOWon = game_1.hasOWon;
 
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var moves_1 = __webpack_require__(3);
 	var evaluation_1 = __webpack_require__(4);
 	var game_1 = __webpack_require__(8);
@@ -144,11 +147,12 @@
 	exports.getBestMove = getBestMove;
 
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	function getMoves(grid) {
 	    return grid
 	        .map(function (value, index) { return value == undefined ? index : undefined; })
@@ -157,11 +161,12 @@
 	exports.getMoves = getMoves;
 
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var helpers_1 = __webpack_require__(5);
 	function evaluate(grid) {
 	    return helpers_1.evaluateRows(grid) + helpers_1.evaluateColumns(grid) + helpers_1.evaluateDiagonals(grid);
@@ -169,11 +174,12 @@
 	exports.evaluate = evaluate;
 
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var utils_1 = __webpack_require__(6);
 	function evaluateRows(grid) {
 	    return utils_1.getRows(grid)
@@ -222,11 +228,12 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var helpers_1 = __webpack_require__(7);
 	function getArray(length) {
 	    return Array.apply(null, { length: length }).map(Number.call, Number);
@@ -253,11 +260,12 @@
 	exports.getDiagonals = getDiagonals;
 
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	function transpose(grid) {
 	    var size = Math.sqrt(grid.length);
 	    return grid.map(function (x, i) { return grid[Math.floor(i / size) + ((i % size) * size)]; });
@@ -265,11 +273,12 @@
 	exports.transpose = transpose;
 
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var helpers_1 = __webpack_require__(9);
 	function nextValue(grid) {
 	    return grid.filter(function (cell) { return cell != undefined; }).length % 2 == 0;
@@ -298,11 +307,12 @@
 	exports.isFull = isFull;
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	var utils_1 = __webpack_require__(6);
 	function doesAnyArrayHaveAll(cellsArray, value) {
 	    return cellsArray.some(function (cells) { return cells.every(function (cell) { return cell === value; }); });
@@ -315,11 +325,12 @@
 	exports.hasWon = hasWon;
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
 	function minimax(node, depth, maximizingPlayer, evaluate, isTerminalNode, getChildren) {
 	    if (depth == 0 || isTerminalNode(node))
 	        return evaluate(node);
@@ -332,6 +343,6 @@
 	exports.minimax = minimax;
 
 
-/***/ }
+/***/ })
 /******/ ]);
 //# sourceMappingURL=app.js.map
