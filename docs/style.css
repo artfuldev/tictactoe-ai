@@ -146,10 +146,30 @@ a.new:hover {
   left: 0;
   z-index: 10;
   background: rgba(255,255,255,0.8);
+  color: black;
+  font-size: 2em;
+  text-align: center;
 }
 
 .result.won, .result.drawn {
   display: block;
+}
+
+.result::after {
+  top: 10%;
+  position: relative;
+}
+
+.result.o.won::after {
+  content: 'The AI won';
+}
+
+.result.x.won::after {
+  content: 'You won!';
+}
+
+.result.drawn::after {
+  content: 'The game is a draw';
 }
 
 .cell {
