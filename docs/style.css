@@ -138,25 +138,28 @@ a.new:hover {
 }
 
 .result {
-  display: none;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 10;
-  background: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.8);
+  opacity: 0;
   color: black;
   font-size: 2em;
   text-align: center;
+  pointer-events: none;
+
+  transition: opacity 0.5s;
 }
 
 .result.won, .result.drawn {
-  display: block;
+  opacity: 1;
 }
 
 .result::after {
-  top: 10%;
+  line-height: 500px;
   position: relative;
 }
 
