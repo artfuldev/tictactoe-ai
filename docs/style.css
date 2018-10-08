@@ -146,10 +146,12 @@ a.new:hover {
   z-index: 10;
   background-color: rgba(255,255,255,0.8);
   opacity: 0;
-  color: black;
-  font-size: 2em;
   text-align: center;
   pointer-events: none;
+
+  color: #9c27b0;
+  font-weight: bold;
+  font-size: 2em;
 
   transition: opacity 0.5s;
 }
