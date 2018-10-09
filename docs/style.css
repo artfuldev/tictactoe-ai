@@ -138,18 +138,43 @@ a.new:hover {
 }
 
 .result {
-  display: none;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   z-index: 10;
-  background: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.8);
+  opacity: 0;
+  text-align: center;
+  pointer-events: none;
+
+  color: #9c27b0;
+  font-weight: bold;
+  font-size: 2em;
+
+  transition: opacity 0.5s;
 }
 
 .result.won, .result.drawn {
-  display: block;
+  opacity: 1;
+}
+
+.result::after {
+  line-height: 500px;
+  position: relative;
+}
+
+.result.o.won::after {
+  content: 'The AI won';
+}
+
+.result.x.won::after {
+  content: 'You won!';
+}
+
+.result.drawn::after {
+  content: 'The game is a draw';
 }
 
 .cell {
