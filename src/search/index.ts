@@ -5,8 +5,16 @@ import { Grid, Move } from '../definitions';
 import { alphaBeta } from './alphaBeta';
 import { minimax } from './minimax';
 
+let cache : Map<Grid,Number>;
+
 export const getBestMove = (grid: Grid, forX?: (grid: Grid) => boolean, depth?: number): Move => {
+  
+  
+  if(cache.get(grid) !== undefined){
+    return cache.get(grid);
+  }
   const moves = getMoves(grid);
+  
   if (depth == undefined) depth = moves.length;
   if (forX == undefined) forX = nextValue;
   const isX = forX(grid);
@@ -21,6 +29,8 @@ export const getBestMove = (grid: Grid, forX?: (grid: Grid) => boolean, depth?: 
   });
   const sortedMovesWithScores = movesWithScores.sort((a, b) => b.score - a.score);
   const sortedMoves = sortedMovesWithScores.map(x => x.move);
+
+  cache.set(grid,sortedMoves[0]);
   // Return the move with the best evaluation so far
   return sortedMoves[0];
 }
